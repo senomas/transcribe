@@ -1,0 +1,8 @@
+pytube
+ffmpeg-python
+yt-dlp
+pydub
+openai-whisper
+torch
+dotenv
+openai

@@ -1,0 +1,5 @@
+.env
+.transcribe
+cookie.txt
+/models
+/output
