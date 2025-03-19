@@ -135,7 +135,7 @@ def read_text_from_file(filename):
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print(f"Usage: python app.py <YouTube_URL> {len(sys.argv)}")
+        print(f"Usage: python app.py <cmd> <YouTube_URL>")
         sys.exit(1)
 
     # Clean up old files
