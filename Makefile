@@ -2,12 +2,17 @@ SHELL := /bin/bash
 .SHELLFLAGS := -e -o pipefail -c
 .PHONY: FORCE
 
+VER := 1.0
+
 build: .transcribe
+
+push: build
+	docker push docker.senomas.com/transcribe:$(VER)
 
 .transcribe: Dockerfile requirements.txt *.py
 	docker build \
 		--build-arg UID=$(shell id -u) --build-arg GID=$(shell id -g) \
-		-t transcribe .
+		-t docker.senomas.com/transcribe:$(VER) .
 	touch .transcribe
 
 
@@ -20,5 +25,5 @@ run: build FORCE
 	docker run --rm -v $(shell pwd)/output:/app/data \
 		-v $(shell pwd)/models:/models \
 		--env-file .env \
-		transcribe "$(link)"
+		docker.senomas.com/transcribe:$(VER) "$(link)"
 
